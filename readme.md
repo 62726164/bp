@@ -15,13 +15,9 @@ It's the simplest, smallest and fastest way to accomplish this task. Bloom filte
 ## How to Construct the Partial SHA1 Hash List
 
 ```
+  $ 7z e pwned-passwords-ordered-by-count.7z
+
   $ cut -c 1-16 pwned-passwords-ordered-by-count.txt > 16.txt
-
-  $ wc -l pwned-passwords-ordered-by-count.txt 
-  517238891 pwned-passwords-ordered-by-count.txt
-
-  $ sort -T /tmp/ -u 16.txt | wc -l
-  517238891
 
   $ head 16.txt 
   7C4A8D09CA3762AF
@@ -33,7 +29,7 @@ It's the simplest, smallest and fastest way to accomplish this task. Bloom filte
 ## How to Create the Bloom Filter
 
 ```
-  load /path/to/16.txt /path/to/output.filter
+  $ load /path/to/16.txt /path/to/output.filter
 ```
 
 ## Test the Bloom Filter for Membership
