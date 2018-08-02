@@ -1,4 +1,4 @@
-# Blooming Password
+# Blooming Password - bp
 
 A program that implements the [NIST 800-63-3b Banned Password Check](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf) using a [bloom filter](https://dl.acm.org/citation.cfm?doid=362686.362692) built from the [Have I been pwned 3.0](https://haveibeenpwned.com/Passwords) SHA1 password hash list. The Have I Been Pwned 3.0 SHA1 password hash list contains more than 517 million hashes and is 22GB uncompressed (as of July 2018). The bloom filter of these SHA1 password hashes is only 860MB and will fit entirely into memory on a virtual machine or Docker container with 2GB of RAM.
 
