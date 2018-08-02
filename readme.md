@@ -4,7 +4,7 @@ A program that implements the [NIST 800-63-3b Banned Password Check](https://nvl
 
 ## Why a Bloom Filter?
 
-It's the simplest, smallest and fastest way to accomplish this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) then it's safe to use that password.
+It's one of the simplest, smallest and fastest data structures for this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) then it's safe to use that password.
 
 ## Partial SHA1 Hashes
 
