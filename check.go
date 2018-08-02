@@ -65,6 +65,7 @@ func main() {
 	// Pick option 1. or 2. to read in the filter.
 	// Option 1. is much faster. Download a prebuilt filter here:
 	// https://drive.google.com/open?id=1TTpxHrqgp8T7GvLlyR9ooEN1KSJzJb5o
+	// md5sum: 11a9c52431ef2c35014471a0a1b8c9ee
 
 	// Option 1. Get the filter from a local file (Jack)
 	f, err := os.Open("/home/jack/filter/hibp3.filter")
