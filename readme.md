@@ -4,9 +4,15 @@ A program that implements the [NIST 800-63-3b Banned Password Check](https://nvl
 
 ## Partial SHA1 Hashes
 
-SHA1 hashes are 20 bytes of raw binary data and thus typically hex encoded for a total of 40 characters. Blooming Password uses just the first 16 hex encoded characters of the hashes to build the bloom filter and to test the filter for membership. The program rejects complete hashes if they are sent.
+SHA1 hashes are 20 bytes of raw binary data and thus typically hex encoded for a total of 40 characters. Blooming Password uses just the first 16 hex encoded characters of the hashes to build the bloom filter and to test the filter for membership. The program rejects complete hashes if they are sent. False positive rates in the bloom filter are not impacted by the shortening of the SHA1 password hashes. The cardinality of the set is unchanged. The FP rate is .001 (1 in 1,000). You may verify the cardinality is unchanged after truncating the hashes.
 
-False positive rates in the bloom filter are not impacted by the shortening of the SHA1 password hashes. The cardinality of the set is unchanged. The FP rate is .001 (1 in 1,000).
+```
+  $ wc -l pwned-passwords-ordered-by-count.txt 
+  517238891 pwned-passwords-ordered-by-count.txt
+
+  $ sort -T /tmp/ -u 16.txt | wc -l
+  517238891
+```
 
 ## Why a Bloom Filter?
 
