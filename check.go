@@ -62,9 +62,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-    // Pick option 1. or 2. to read in the filter.
-    // Option 1. is much faster. Download a prebuilt filter here:
-    // https://drive.google.com/open?id=1TTpxHrqgp8T7GvLlyR9ooEN1KSJzJb5o
+	// Pick option 1. or 2. to read in the filter.
+	// Option 1. is much faster. Download a prebuilt filter here:
+	// https://drive.google.com/open?id=1TTpxHrqgp8T7GvLlyR9ooEN1KSJzJb5o
 
 	// Option 1. Get the filter from a local file (Jack)
 	f, err := os.Open("/home/jack/filter/hibp3.filter")
@@ -81,7 +81,7 @@ func main() {
 	//}
 	//defer resp.Body.Close()
 
-    // Uncomment depending on choice 1. or 2. from above
+	// Uncomment depending on choice 1. or 2. from above
 	bytesRead, err := filter.ReadFrom(f)
 	// bytesRead, err := filter.ReadFrom(resp.Body)
 	if err != nil {
