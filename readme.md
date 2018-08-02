@@ -2,6 +2,10 @@
 
 A program that implements the [NIST 800-63-3b Banned Password Check](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf) using a [bloom filter](https://dl.acm.org/citation.cfm?doid=362686.362692) built from the [Have I been pwned 3.0](https://haveibeenpwned.com/Passwords) SHA1 password hash list. The Have I Been Pwned 3.0 SHA1 password hash list contains more than 517 million hashes and is 22GB uncompressed (as of July 2018). The bloom filter of these SHA1 password hashes is only 887MB and will fit entirely into memory on a virtual machine or Docker container with 2GB of RAM.
 
+## Why a Bloom Filter?
+
+It's the simplest, smallest and fastest way to accomplish this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) then it's safe to use that password.
+
 ## Partial SHA1 Hashes
 
 SHA1 hashes are 20 bytes of raw binary data and thus typically hex encoded for a total of 40 characters. Blooming Password uses just the first 16 hex encoded characters of the hashes to build the bloom filter and to test the filter for membership. The program rejects complete hashes if they are sent. False positive rates in the bloom filter are not impacted by the shortening of the SHA1 password hashes. The cardinality of the set is unchanged. The FP rate is .001 (1 in 1,000). You may verify the cardinality is unchanged after truncating the hashes.
@@ -13,10 +17,6 @@ SHA1 hashes are 20 bytes of raw binary data and thus typically hex encoded for a
   $ sort -T /tmp/ -u 16.txt | wc -l
   517238891
 ```
-
-## Why a Bloom Filter?
-
-It's the simplest, smallest and fastest way to accomplish this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) then it's safe to use that password.
 
 ## How to Construct the Partial SHA1 Hash List
 
