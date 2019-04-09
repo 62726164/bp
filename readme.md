@@ -42,9 +42,9 @@ SHA1 hashes are 20 bytes of raw binary data and thus typically hex encoded for a
 
 Send the first 16 characters of the hex encoded SHA1 hash to the Blooming Password program. Some examples using curl:
 
-  * curl -4 https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF
-  * curl -6 https://www.bloomingpassword.fun/hashes/sha1/F7C3BC1D808E0473
-  * curl -4 https://www.bloomingpassword.fun/hashes/sha1/$(echo -n "secret123" | shasum | cut -c 1-16)
+  * curl -4 https://check.aws.cloud.iso.vt.edu/hashes/sha1/0123456789ABCDEF
+  * curl -6 https://check.aws.cloud.iso.vt.edu/hashes/sha1/F7C3BC1D808E0473
+  * curl -4 https://check.aws.cloud.iso.vt.edu/hashes/sha1/$(echo -n "secret123" | shasum | cut -c 1-16)
 
 ## Return Codes
 
