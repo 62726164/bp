@@ -56,5 +56,5 @@ Send the first 16 characters of the hex encoded SHA1 hash to the Blooming Passwo
 
   * Blooming Password is written in [Go](https://golang.org).
   * It uses [willf's excellent bloom filter](https://github.com/willf/bloom) implementation.
-  * The Examples above are hosted on a [Linode](http://linode.com/) VPS with 2 GB of memory.
+  * The Examples above are hosted in AWS ECS (Docker) with 2 GB of memory. A VPS works fine too.
   * [OPUS](https://dl.acm.org/citation.cfm?id=134593) is an example of earlier work using a much smaller filter. (Eugene Spafford, 1992).
