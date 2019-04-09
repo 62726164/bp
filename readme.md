@@ -4,7 +4,7 @@ A program that implements the [NIST 800-63-3b Banned Password Check](https://nvl
 
 ## Why a Bloom Filter?
 
-It's one of the simplest, smallest and fastest data structures for this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) then it's safe to use that password.
+It's one of the simplest, smallest and fastest data structures for this task. Bloom filters have constant time performance (where K is the constant) for insertion and lookup. They can easily handle billions of banned password hashes with very modest resources. When a test for membership returns 404 then it's safe to use that password.
 
 ## Partial SHA1 Hashes
 
@@ -48,9 +48,9 @@ Send the first 16 characters of the hex encoded SHA1 hash to the Blooming Passwo
 
 ## Return Codes
 
-  * [200](https://www.bloomingpassword.fun/hashes/sha1/F7C3BC1D808E0473) - The hash is probably in the bloom filter.
-  * [400](https://www.bloomingpassword.fun/hashes/sha1/PASSWORD) - The client sent a bad request.
-  * [404](https://www.bloomingpassword.fun/hashes/sha1/0123456789ABCDEF) - The hash is definitely not in the bloom filter.
+  * [200](https://check.aws.cloud.iso.vt.edu/hashes/sha1/F7C3BC1D808E0473) - The hash is probably in the bloom filter.
+  * [400](https://check.aws.cloud.iso.vt.edu/hashes/sha1/PASSWORD) - The client sent a bad request.
+  * [404](https://check.aws.cloud.iso.vt.edu/hashes/sha1/0123456789ABCDEF) - The hash is definitely not in the bloom filter.
 
 ## Notes
 
