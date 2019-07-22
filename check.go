@@ -68,23 +68,23 @@ func main() {
 	// md5sum: 11a9c52431ef2c35014471a0a1b8c9ee
 
 	// Option 1. Get the filter from a local file (Jack)
-	f, err := os.Open("/home/jack/filter/hibp3.filter")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-
-	// Option 2. Get the filter from a URL (Docker Container)
-	//url := "https://url.to.the.filter/hibp3.filter"
-	//resp, err := http.Get(url)
+	//f, err := os.Open("/home/jack/filter/hibp3.filter")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
-	//defer resp.Body.Close()
+	//defer f.Close()
+
+	// Option 2. Get the filter from a URL (Docker Container)
+	url := "https://path/to/s3/bucket/that/contains/the/filter/hibp3.filter"
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
 
 	// Uncomment depending on choice 1. or 2. from above
-	bytesRead, err := filter.ReadFrom(f)
-	// bytesRead, err := filter.ReadFrom(resp.Body)
+	//bytesRead, err := filter.ReadFrom(f)
+	bytesRead, err := filter.ReadFrom(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
