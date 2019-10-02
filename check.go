@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/w8rbt/bloom"
+	"github.com/62726164/bloom"
 	"log"
 	"math"
 	"net/http"

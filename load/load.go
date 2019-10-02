@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/w8rbt/bloom"
+	"github.com/62726164/bloom"
 	"log"
 	"math"
 	"os"
