@@ -8,6 +8,7 @@ build:
 clean:
 	rm -f $(PROGRAM)
 	rm -f *.pem
+	docker system prune --all
 
 fmt:
 	gofmt -w $(SOURCE)
@@ -17,3 +18,12 @@ vet:
 
 run:
 	go run $(SOURCE)
+
+docker:
+	docker build -t bp .
+
+tag:
+	docker tag bp:latest 045356666431.dkr.ecr.us-east-2.amazonaws.com/bp:latest
+
+push:
+	docker push 045356666431.dkr.ecr.us-east-2.amazonaws.com/bp:latest
