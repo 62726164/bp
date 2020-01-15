@@ -7,7 +7,7 @@ build:
 
 clean:
 	rm -f $(PROGRAM)
-	rm *.pem
+	rm -f *.pem
 
 fmt:
 	gofmt -w $(SOURCE)
