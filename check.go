@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 var fp = .001                                                                      // False Positive Rate (1 in 1,000)
@@ -95,10 +96,16 @@ func main() {
 	router.HandleFunc("/hashes/sha1/{hash}", check).Methods("GET")
 	router.HandleFunc("/", index).Methods("GET")
 
+	// Don't use ProxyHeaders unless running behind a proxy or a LB.
+	handler := handlers.CombinedLoggingHandler(os.Stdout, handlers.ProxyHeaders(router))
+
 	// server routes over TLS
-	log.Fatal(http.ListenAndServeTLS("0.0.0.0:9379",
-		"/tmp/cert.pem",
-		"/tmp/privkey.pem",
-		// Don't use ProxyHeaders unless running behind a proxy or a LB.
-		handlers.CombinedLoggingHandler(os.Stdout, handlers.ProxyHeaders(router))))
+	server := &http.Server{
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		Addr:         "0.0.0.0:9379",
+		Handler:      handler,
+	}
+
+	log.Fatal(server.ListenAndServeTLS("/tmp/cert.pem", "/tmp/privkey.pem"))
 }
