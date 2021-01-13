@@ -7,17 +7,12 @@ build:
 
 clean:
 	rm -f $(PROGRAM)
-	rm -f *.pem
-	docker system prune --all
 
 fmt:
 	gofmt -w $(SOURCE)
 
 vet:
 	go vet $(SOURCE)
-
-run:
-	go run $(SOURCE)
 
 docker:
 	docker build -t bp .
