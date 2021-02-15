@@ -1,12 +1,13 @@
-FROM debian:latest
+FROM alpine:3.13
+ 
+RUN mkdir -p /tmp
 
-RUN apt-get update && apt-get -y upgrade
-RUN apt-get install ca-certificates -y
+WORKDIR /tmp
 
 EXPOSE 9379
 
-COPY check /usr/local/bin/
+COPY check /tmp/
 COPY privkey.pem /tmp/
 COPY cert.pem /tmp/
 
-CMD ["/usr/local/bin/check"]
+CMD ["/tmp/check"]
